@@ -1,0 +1,14 @@
+{
+  "name": "wherebboys",
+  "version": "1.0.0",
+  "description": "Gis Web Application for locating places and people whose practice break dance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Seikon",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
