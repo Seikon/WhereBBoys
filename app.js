@@ -1,10 +1,14 @@
 var express = require('express');
 var app = express();
-var languajes = require("./languaje");
+var structure = require("./structure");
+var resources = require("./resources");
 
-app.use("/en", languajes);
-app.use("/es", languajes);
-app.use("/de", languajes);
+app.use("/en", structure);
+app.use("/es", structure);
+app.use("/de", structure);
+
+app.use('js', express.static('js'));
+app.use('css', express.static('css'));
 
 //This controller check the IP Location of the request
 //and redirect to ES, EN, DE languaje (EN default)
