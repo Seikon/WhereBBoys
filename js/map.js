@@ -14,6 +14,28 @@ function initMap()
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-mapController = new MapController(map, ID_CONTAINER);
+    var worldMapRequest = new Request(SERVER_URL);
 
+    var deferred = worldMapRequest.getGeoJSONWorldMap();
+
+    deferred.done(function(data) {
+
+        //Instance the WorldMap layer throught geoserver
+        var worldMapLayer = L.geoJson(data, {onEachFeature: onEachFeature}).addTo(map);
+
+        var mapController = new MapController(map, worldMapLayer, ID_CONTAINER);
+
+        mapController = new MapController(map, ID_CONTAINER);
+
+    });
+
+    deferred.fail(function(err) {
+
+    });
+}
+
+function onEachFeature(feature, layer) {
+    layer.on({
+        click: function(e){ alert(e.target.feature.properties.adm0_a3);}
+    });
 }
