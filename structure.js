@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var path = require("path");
 
 var SUPPORTED_LANGUAJES = {
 
@@ -40,7 +41,7 @@ router.get('/', function(req, res) {
 });
 // define the about route
 router.get('/map', function(req, res) {
-  res.send('Map App');
+  res.sendFile((path.join(__dirname+'/Views/map.html')));
 });
 
 router.get('/contributors', function(req, res) {

@@ -1,10 +1,19 @@
 var express = require('express');
 var app = express();
-var languajes = require("./languaje");
+var structure = require("./structure");
+var geoserver = require("./geoserver");
+var path = require("path");
 
-app.use("/en", languajes);
-app.use("/es", languajes);
-app.use("/de", languajes);
+app.use("/en", structure);
+app.use("/es", structure);
+app.use("/de", structure);
+
+//This controller initiallizes the geoserver
+//with GeoJson data endpoints.
+app.use("/geoserver", geoserver);
+
+app.use('/js', express.static('js'));
+app.use('/css', express.static('css'));
 
 //This controller check the IP Location of the request
 //and redirect to ES, EN, DE languaje (EN default)
