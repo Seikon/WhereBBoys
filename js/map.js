@@ -18,24 +18,75 @@ function initMap()
 
     var deferred = worldMapRequest.getGeoJSONWorldMap();
 
-    deferred.done(function(data) {
+    Window.mapController = mapController;
 
-        //Instance the WorldMap layer throught geoserver
-        var worldMapLayer = L.geoJson(data, {onEachFeature: onEachFeature}).addTo(map);
+    deferred.done(function(data) {
 
         var mapController = new MapController(map, worldMapLayer, ID_CONTAINER);
 
         mapController = new MapController(map, ID_CONTAINER);
 
+        //Instance the WorldMap layer throught geoserver
+        var worldMapLayer = L.geoJson(data, {onEachFeature: $.proxy(selectCounty, this, mapController)}).addTo(map);
+
     });
 
     deferred.fail(function(err) {
-
+        alert("Error loading the map");
     });
 }
 
-function onEachFeature(feature, layer) {
+function selectCounty(mapController, feature, layer) {
     layer.on({
-        click: function(e){ alert(e.target.feature.properties.adm0_a3);}
+        //When users click on a country, we will make zoom on the selection
+        click: function(e) 
+        { 
+            var selectedFeature = e.target.feature;
+
+            mapController.selectCountry = e.target.feature;
+
+            var newCoordinates = reverseCoordinates(mapController.selectCountry.geometry.coordinates);
+            
+            if(mapController.polygonCountry)
+            {
+                mapController.map.removeLayer(mapController.polygonCountry);
+            }
+
+            mapController.polygonCountry = L.polygon(newCoordinates, {color: "red"}).addTo(mapController.map);
+
+            //mapController.map.setView(centroid.geometry.coordinates);
+            mapController.map.fitBounds(newCoordinates);
+            
+            //alert(.properties.adm0_a3);
+        }
     });
+}
+
+function reverseCoordinates(coordinates)
+{
+    var returnedCoordinates = [];
+
+    for(var i = 0; i < coordinates.length; i++)
+    {
+        if(coordinates.length == 1)
+        {
+            returnedCoordinates.push([]);
+
+            for(var j = 0; j < coordinates[i].length; j++)
+            {
+                returnedCoordinates[i].push([coordinates[i][j][1], coordinates[i][j][0]]);
+            }
+        }
+        else
+        {
+            returnedCoordinates.push([]);
+
+            for(var j = 0; j < coordinates[i][0].length; j++)
+            {
+                returnedCoordinates[i].push([coordinates[i][0][j][1], coordinates[i][0][j][0]]);
+            }
+        }
+    }
+
+    return returnedCoordinates;
 }
