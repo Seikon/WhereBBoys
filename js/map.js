@@ -27,7 +27,7 @@ function initMap()
         mapController = new MapController(map, ID_CONTAINER);
 
         //Instance the WorldMap layer throught geoserver
-        var worldMapLayer = L.geoJson(data, {onEachFeature: $.proxy(selectCounty, this, mapController)}).addTo(map);
+        var worldMapLayer = L.geoJson(data, {onEachFeature: $.proxy(onSelectedCounty, this, mapController)}).addTo(map);
 
     });
 
@@ -36,7 +36,7 @@ function initMap()
     });
 }
 
-function selectCounty(mapController, feature, layer) {
+function onSelectedCounty(mapController, feature, layer) {
     layer.on({
         //When users click on a country, we will make zoom on the selection
         click: function(e) 
@@ -54,12 +54,26 @@ function selectCounty(mapController, feature, layer) {
 
             mapController.polygonCountry = L.polygon(newCoordinates, {color: "red"}).addTo(mapController.map);
 
-            //mapController.map.setView(centroid.geometry.coordinates);
             mapController.map.fitBounds(newCoordinates);
-            
+
+            //Get the information of country date places
+            mapController.cache.getcountryDancePlaces(mapController.selectCountry.properties.adm0_a3)
+
+            .done($.proxy(paintCountryPlacesOnMap, this, mapController))
+            .fail($.proxy(paintErrorCountryPlacesOnMap, this, mapController));
             //alert(.properties.adm0_a3);
         }
     });
+}
+
+function paintCountryPlacesOnMap(mapController, data)
+{
+    
+}
+
+function paintErrorCountryPlacesOnMap(mapController, err)
+{
+    alert("Error Getting the information of dance places");
 }
 
 function reverseCoordinates(coordinates)

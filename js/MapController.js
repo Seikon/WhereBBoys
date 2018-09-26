@@ -5,4 +5,5 @@ function MapController(map, worldMapLayer, containerId)
     this.containerId = containerId;
     this.selectedCountry;
     this.polygonCountry;
+    this.cache = new Cache();
 }
