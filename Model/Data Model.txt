@@ -2,20 +2,21 @@ Training Places:
 {
   address: "",
   coordinates: {
-		Lat: "",
-	        Lon: ""},
+		lat: "",
+	        lon: ""},
 
   contactPerson: {
 		  Name: "",
-	          SureName: "",
+	      SureName: "",
 		  Aka: "",
-	          Crew: "",
+	      Crew: "",
 		  Email: "",
-	          Telefon: "",
+	      Telefon: "",
 		  Facebook: "",
-	          Instagram: ""
+	      Instagram: ""
 		}
-   Type: "Scheduled Training / Ocasional"
+   Type: "Scheduled Training / Ocasional",
+   countryKey: "",
 
     Schedule : {
             	intervals:[{day: "", startHour: "", finishHour: ""}]

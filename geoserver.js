@@ -15,8 +15,6 @@ var SUPPORTED_LANGUAJES = {
 
 model = new ModelDB();
 
-model.getTrainingPlaces();
-
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
   console.log('Geo Server access Time: ', Date.now());
@@ -26,8 +24,16 @@ router.use(function timeLog(req, res, next) {
 router.get('/sites/training/:id', function(req, res) {
 
     res.setHeader('Content-Type', 'application/json');
-    
-    res.send({places: [{id:1, name: "Example"}]});
+
+    model.getTrainingPlaces(req.params.id).toArray(function(err, data){
+        
+        if(err)
+            res.status(500).send("We cant serve the training Sites of this country");
+        else
+        {
+            res.send(data);
+        }
+    });
 });
 
 router.get('/sites/danceschools/:id', function(req, res) {

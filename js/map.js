@@ -61,19 +61,37 @@ function onSelectedCounty(mapController, feature, layer) {
 
             .done($.proxy(paintCountryPlacesOnMap, this, mapController))
             .fail($.proxy(paintErrorCountryPlacesOnMap, this, mapController));
-            //alert(.properties.adm0_a3);
         }
     });
 }
 
-function paintCountryPlacesOnMap(mapController, data)
+function paintCountryPlacesOnMap(mapController, trainingPlaces)
 {
-    
+    var trainingPlacesMarkers = [];
+
+    for(var i = 0; i < trainingPlaces.length; i++)
+    {
+        if(trainingPlaces[i].coordinates != null)
+        {
+            trainingPlacesMarkers.push(L.marker([trainingPlaces[i].coordinates.lan,
+                                                 trainingPlaces[i].coordinates.lon]));
+        }
+
+    }
+
+    if(mapController.trainingPlacesLayer != null)
+    {
+        mapController.map.removeLayer(mapController.trainingPlacesLayer);
+    }
+
+    mapController.trainingPlacesLayer = L.layerGroup(trainingPlacesMarkers);
+    mapController.trainingPlacesLayer.addTo(mapController.map);
+
 }
 
 function paintErrorCountryPlacesOnMap(mapController, err)
 {
-    alert("Error Getting the information of dance places");
+    alert("Error Getting the information of training places");
 }
 
 function reverseCoordinates(coordinates)
