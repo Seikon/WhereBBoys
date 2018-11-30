@@ -1,0 +1,24 @@
+Training Places:
+{
+  address: "",
+  coordinates: {
+		lat: "",
+	        lon: ""},
+
+  contactPerson: {
+		  Name: "",
+	      SureName: "",
+		  Aka: "",
+	      Crew: "",
+		  Email: "",
+	      Telefon: "",
+		  Facebook: "",
+	      Instagram: ""
+		}
+   Type: "Scheduled Training / Ocasional",
+   countryKey: "",
+
+    Schedule : {
+            	intervals:[{day: "", startHour: "", finishHour: ""}]
+           }
+}

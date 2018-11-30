@@ -21,13 +21,13 @@ Request.prototype.getGeoJSONWorldMap = function()
             context: this
         });
     
-        request.done((function(data) {
+        request.done(function(data) {
     
             //Save the data in the local storage with a key
             this.setItemLocalStorage(this.LOCAL_STORAGE_KEYS.WORLD_MAP, data);
             //Send the data to the requester
             clientDeferred.resolve(data);
-        }));
+        });
     
         request.fail(function(err) {
 
@@ -38,6 +38,30 @@ Request.prototype.getGeoJSONWorldMap = function()
     {
             clientDeferred.resolve(worldMapData);
     }
+
+    return clientDeferred;
+}
+
+Request.prototype.getPlaces = function(countryKey) {
+
+    var clientDeferred = $.Deferred();
+
+    var request = $.ajax({
+        dataType: "json",
+        url: this.serverUrl + "/geoserver/sites/training/"+ countryKey,
+        context: this
+    });
+
+    request.done(function(data) {
+
+        clientDeferred.resolve(data);
+
+    });
+
+    request.fail(function(err) {
+
+        clientDeferred.reject(err);
+    });
 
     return clientDeferred;
 }
