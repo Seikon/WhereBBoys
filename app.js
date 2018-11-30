@@ -4,6 +4,8 @@ var structure = require("./structure");
 var geoserver = require("./geoserver");
 var path = require("path");
 
+app.set('view engine', 'pug');
+
 app.use("/en", structure);
 app.use("/es", structure);
 app.use("/de", structure);

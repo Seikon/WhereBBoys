@@ -21,4 +21,10 @@ router.get("/js/MapController", function(req, res) {
 
 });
 
+router.get("/js/MapController", function(req, res) {
+
+    res.sendFile((path.join(__dirname+'/js/bootstrap/js/bootstrap.bundle.min.js')));
+
+});
+
 module.exports = router;
