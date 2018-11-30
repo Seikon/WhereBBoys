@@ -3,13 +3,6 @@ var router = express.Router();
 var path = require("path");
 var fs = require('fs');
 
-var SUPPORTED_LANGUAJES = {
-
-    ES : 1,
-    EN: 2,
-    DE : 3
-};
-
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
   console.log('Geo Server access Time: ', Date.now());
@@ -17,11 +10,11 @@ router.use(function timeLog(req, res, next) {
 });
 
 router.get('/sites/training', function(req, res) {
-    res.send('Hello World!');
+    //Not implemented yet!
 });
 
 router.get('/sites/danceschools', function(req, res) {
-    res.send('Hello World!');
+    //Not implemented yet!
 });
 
 router.get('/worldmap', function(req, res) {

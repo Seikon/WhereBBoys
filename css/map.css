@@ -1,5 +1,18 @@
 #mapContainer {
-    height: 500px;
+    height: 600px;
     width: 100%;
     border: 0.1em solid black;
 }
+
+.switch-toggle {
+    width: 10em;
+  }
+  
+  .switch-toggle label:not(.disabled) {
+    cursor: pointer;
+  }
+
+  .brandedCaption {
+      color: white;
+      background-color: #343a40;
+  }

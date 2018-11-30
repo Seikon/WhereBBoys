@@ -29,6 +29,9 @@ function initMap()
         //Instance the WorldMap layer throught geoserver
         var worldMapLayer = L.geoJson(data, {onEachFeature: $.proxy(selectCounty, this, mapController)}).addTo(map);
 
+        //Show the first step that user has to make
+        $("#" + ID_FIRST_STEP).css('display', 'inline');
+
     });
 
     deferred.fail(function(err) {
@@ -58,8 +61,24 @@ function selectCounty(mapController, feature, layer) {
             mapController.map.fitBounds(newCoordinates);
             
             //alert(.properties.adm0_a3);
+
+            //Show the second step that user has to make
+            $("#" + ID_SECOND_STEP).css('display', 'inline');
+            //Show all the options
+            $("#" + ID_OPTION_SEARCH).unbind("click");
+            $("#" + ID_OPTION_ADD).unbind("click");
+
+            $("#" + ID_OPTION_SEARCH).click(function() {selectMode(INTERACTION_MODE.SEARCH);});
+            $("#" + ID_OPTION_ADD).click(function() {selectMode(INTERACTION_MODE.ADD);});
         }
     });
+}
+
+function selectMode(parameter)
+{
+    //Show step three
+    $("#" + ID_THIRD_STEP).css('display', 'inline');
+
 }
 
 function reverseCoordinates(coordinates)
