@@ -4,6 +4,7 @@
         "stepOne": "Paso 1",
         "stepOneDescription" : "Primero selecciona el país haciendo click sobre el mapa.",
         "stepTwoDescription" : "¿Quieres buscar sitios para entrenar o añadir uno nuevo?",
+        "stepThreeDescription" : "Selecciona el lugar de entrenamiento para obtener más información, pulsa el icono de obtener ubicación, para obtener tu ubicación actual",
         "stepTwo": "Paso 2",
         "stepThree": "Paso 3"
     },
