@@ -1,4 +1,4 @@
-Training Places:
+Training Place:
 {
   address: "",
   coordinates: {
@@ -6,16 +6,16 @@ Training Places:
 	        lon: ""},
 
   contactPerson: {
-		  Name: "",
-	      SureName: "",
-		  Aka: "",
-	      Crew: "",
-		  Email: "",
-	      Telefon: "",
-		  Facebook: "",
-	      Instagram: ""
+		  name: "",
+	      surName: "",
+		  aka: "",
+	      crew: "",
+		  email: "",
+	      telefon: "",
+		  facebook: "", //URL
+	      instagram: "" //URL
 		}
-   Type: "Scheduled Training / Ocasional",
+   Type: "Scheduled / Ocasional",
    countryKey: "",
 
     Schedule : {
