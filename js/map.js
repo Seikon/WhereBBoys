@@ -25,10 +25,12 @@ function initMap()
         var mapController = new MapController(map, worldMapLayer, ID_CONTAINER);
 
         mapController = new MapController(map, ID_CONTAINER);
+        mapController.trainingPlacesLayer = new L.LayerGroup();
 
         //Instance the WorldMap layer throught geoserver
         var worldMapLayer = L.geoJson(data, {onEachFeature: $.proxy(selectCounty, this, mapController)}).addTo(map);
-
+        //Instance Training places layer
+        mapController.trainingPlacesLayer.addTo(map);
         //Show the first step that user has to make
         $("#" + ID_FIRST_STEP).css('display', 'inline');
 
@@ -88,10 +90,17 @@ function showTrainingPlaces(mapController)
     var trainingPlacesRequest = new Request(SERVER_URL);
 
     var deferred = trainingPlacesRequest.getTrainingPlaces(mapController.selectCountry.properties.wb_a2);
-
+    mapController.map.removeLayer(mapController.trainingPlacesLayer);
+    mapController.trainingPlacesLayer = new L.LayerGroup();
+    mapController.trainingPlacesLayer.addTo(mapController.map);
     deferred.done(function(trainingPlaces)
     {
-        mapController.trainingPlacesLayer = new L.LayerGroup();
+
+        for(let i = 0; i < trainingPlaces.length; i++)
+        {
+            mapController.trainingPlacesLayer.addLayer(L.marker([trainingPlaces[i].coordinates.lat,
+                                                                 trainingPlaces[i].coordinates.lon]));
+        }
     });
 
     deferred.fail(function()
