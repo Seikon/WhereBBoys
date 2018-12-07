@@ -68,17 +68,36 @@ function selectCounty(mapController, feature, layer) {
             $("#" + ID_OPTION_SEARCH).unbind("click");
             $("#" + ID_OPTION_ADD).unbind("click");
 
-            $("#" + ID_OPTION_SEARCH).click(function() {selectMode(INTERACTION_MODE.SEARCH);});
-            $("#" + ID_OPTION_ADD).click(function() {selectMode(INTERACTION_MODE.ADD);});
+            $("#" + ID_OPTION_SEARCH).click($.proxy(selectMode, this, mapController,INTERACTION_MODE.SEARCH));
+            $("#" + ID_OPTION_ADD).click($.proxy(selectMode, this, mapController,INTERACTION_MODE.ADD));
         }
     });
 }
 
-function selectMode(parameter)
+function selectMode(mapController, parameter)
 {
     //Show step three
     $("#" + ID_THIRD_STEP).css('display', 'inline');
+    //Show training places
+    showTrainingPlaces(mapController);
+    
+}
 
+function showTrainingPlaces(mapController)
+{
+    var trainingPlacesRequest = new Request(SERVER_URL);
+
+    var deferred = trainingPlacesRequest.getTrainingPlaces(mapController.selectCountry.properties.wb_a2);
+
+    deferred.done(function(trainingPlaces)
+    {
+        mapController.trainingPlacesLayer = new L.LayerGroup();
+    });
+
+    deferred.fail(function()
+    {
+        alert("Error showing training places for this country");
+    });
 }
 
 function reverseCoordinates(coordinates)
