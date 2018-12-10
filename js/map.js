@@ -25,10 +25,12 @@ function initMap()
         var mapController = new MapController(map, worldMapLayer, ID_CONTAINER);
 
         mapController = new MapController(map, ID_CONTAINER);
+        mapController.trainingPlacesLayer = new L.LayerGroup();
 
         //Instance the WorldMap layer throught geoserver
         var worldMapLayer = L.geoJson(data, {onEachFeature: $.proxy(selectCounty, this, mapController)}).addTo(map);
-
+        //Instance Training places layer
+        mapController.trainingPlacesLayer.addTo(map);
         //Show the first step that user has to make
         $("#" + ID_FIRST_STEP).css('display', 'inline');
 
@@ -68,17 +70,43 @@ function selectCounty(mapController, feature, layer) {
             $("#" + ID_OPTION_SEARCH).unbind("click");
             $("#" + ID_OPTION_ADD).unbind("click");
 
-            $("#" + ID_OPTION_SEARCH).click(function() {selectMode(INTERACTION_MODE.SEARCH);});
-            $("#" + ID_OPTION_ADD).click(function() {selectMode(INTERACTION_MODE.ADD);});
+            $("#" + ID_OPTION_SEARCH).click($.proxy(selectMode, this, mapController,INTERACTION_MODE.SEARCH));
+            $("#" + ID_OPTION_ADD).click($.proxy(selectMode, this, mapController,INTERACTION_MODE.ADD));
         }
     });
 }
 
-function selectMode(parameter)
+function selectMode(mapController, parameter)
 {
     //Show step three
     $("#" + ID_THIRD_STEP).css('display', 'inline');
+    //Show training places
+    showTrainingPlaces(mapController);
+    
+}
 
+function showTrainingPlaces(mapController)
+{
+    var trainingPlacesRequest = new Request(SERVER_URL);
+
+    var deferred = trainingPlacesRequest.getTrainingPlaces(mapController.selectCountry.properties.wb_a2);
+    mapController.map.removeLayer(mapController.trainingPlacesLayer);
+    mapController.trainingPlacesLayer = new L.LayerGroup();
+    mapController.trainingPlacesLayer.addTo(mapController.map);
+    deferred.done(function(trainingPlaces)
+    {
+
+        for(let i = 0; i < trainingPlaces.length; i++)
+        {
+            mapController.trainingPlacesLayer.addLayer(L.marker([trainingPlaces[i].coordinates.lat,
+                                                                 trainingPlaces[i].coordinates.lon]));
+        }
+    });
+
+    deferred.fail(function()
+    {
+        alert("Error showing training places for this country");
+    });
 }
 
 function reverseCoordinates(coordinates)

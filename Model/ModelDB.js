@@ -8,15 +8,26 @@ class ModelDB
     {
         MongoClient.connect(url).then(function(db)
         {
-            var dbo = db.db("trainingPlaces");
+            var dbo = db.db("wherebboysdb");
             this.dbo = dbo;
+            console.log("Db connection succesful!");
 
         }.bind(this));
     }
 
-    getTrainingPlaces(country)
+    getTrainingPlaces(country,callback)
     {
-        return this.dbo.collection("trainingPlaces").find({countryKey: country});
+        return this.dbo.collection("trainingPlaces").find({countryKey: country}).toArray(function(err, trainingPlaces)
+        {
+            if(err)
+            {
+                throw new("Error getting training places");
+            }
+            else
+            {
+                callback(trainingPlaces);
+            }
+        });
     }
 
 }

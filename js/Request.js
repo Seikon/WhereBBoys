@@ -42,13 +42,14 @@ Request.prototype.getGeoJSONWorldMap = function()
     return clientDeferred;
 }
 
-Request.prototype.getPlaces = function(countryKey) {
+Request.prototype.getTrainingPlaces = function(countryKey) {
 
     var clientDeferred = $.Deferred();
 
     var request = $.ajax({
         dataType: "json",
-        url: this.serverUrl + "/geoserver/sites/training/"+ countryKey,
+        data: {countryKey: countryKey},
+        url: this.serverUrl + "/geoserver/sites/training",
         context: this
     });
 
