@@ -14,8 +14,7 @@ app.use("/de", structure);
 //with GeoJson data endpoints.
 app.use("/geoserver", geoserver);
 
-app.use('/js', express.static('js'));
-app.use('/css', express.static('css'));
+app.use(express.static('public'));
 
 //This controller check the IP Location of the request
 //and redirect to ES, EN, DE languaje (EN default)
