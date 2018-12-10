@@ -1,31 +1,54 @@
 {
     "1" : {
+        "navBar" :
+        {
+            "map": "Mapa",
+            "project": "Proyecto",
+            "collaborators": "Colaboradores",
+            "donate": "Donar",
+            "contact": "Contactar"
+        },
         "headerTitle": "Encuentra BBoys de tu ciudad o región en todo el mundo",
-        "stepOne": "Paso 1",
-        "stepOneDescription" : "Primero selecciona el país haciendo click sobre el mapa.",
-        "stepTwoDescription" : "¿Quieres buscar sitios para entrenar o añadir uno nuevo?",
-        "stepThreeDescription" : "Selecciona el lugar de entrenamiento para obtener más información, pulsa el icono de obtener ubicación, para obtener tu ubicación actual",
-        "stepTwo": "Paso 2",
-        "stepThree": "Paso 3"
+        "stepOneDescription" : "Selecciona el país haciendo click sobre el mapa.",
+        "toolbox": {
+            "location": "Ubicación",
+            "addPlace": "Añadir lugar"
+        }
     },
 
     "2" : {
-        "headerTitle": "Find BBoys from your city or your place all around the world",
-        "stepOne": "Step 1",
-        "stepOneDescription" : "First, click on the desired country from the map.",
-        "stepTwoDescription" : "Wanna look for places to train or add a new one?",
-        "stepTwo": "Step 2",
-        "stepThree": "Step 3"
+        "navBar" :
+        {
+            "map": "Map",
+            "project": "The Project",
+            "collaborators": "Collaborators",
+            "donate": "Donate",
+            "contact": "Contact"
         },
+        "headerTitle": "Find BBoys from your city or your place all around the world",
+        "stepOneDescription" : "Click on the desired country from the map.",
+        "toolbox": {
+            "location": "Location",
+            "addPlace": "Add Place"
+        }
+    },
 
     "3" : {
+        "navBar" :
+        {
+            "map": "Landkarte",
+            "project": "Das Projekt",
+            "collaborators": "Kollaborateur",
+            "donate": "Spenden",
+            "contact": "Kontakt"
+        },
         "headerTitle": "Finden Sie BBoys aus Ihrer Stadt oder Ihrem Ort auf der ganzen Welt",
-        "stepOne": "Schritt 1",
         "stepOneDescription" : "Klicken Sie erste auf der Karte auf das gewünschte Land.",
-        "stepTwoDescription" : "Möchts du nach Orten suchen, an denen Sie trainieren oder neue hinzufügen möchten?",
-        "stepTwo": "Schritt 2",
-        "stepThree": "Schritt 3"
+        "toolbox": {
+            "location": "Standort",
+            "addPlace": "Platz hinzufügen"
         }
+    }
 }
 
 

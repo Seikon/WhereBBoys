@@ -2,7 +2,7 @@
   "name": "wherebboys",
   "version": "1.0.0",
   "description": "Gis Web Application for locating places and people whose practice break dance",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "mongodb": "^3.1.10",
+    "nodemon": "^1.18.7",
     "pug": "^2.0.3"
   }
 }
