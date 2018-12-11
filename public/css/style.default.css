@@ -3734,3 +3734,8 @@ select.form-control-lg:not([size]):not([multiple]) {
   border-right: 1.3em solid #dcbe37;
   border-radius: 1% 1% 0 0;
 }
+
+.leaflet-popup-content-wrapper 
+{
+  background-color: #333333;
+}

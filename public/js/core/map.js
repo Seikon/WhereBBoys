@@ -56,7 +56,10 @@ function selectCounty(mapController, feature, layer) {
                 mapController.map.removeLayer(mapController.polygonCountry);
             }
 
-            mapController.polygonCountry = L.polygon(newCoordinates, {color: "red"}).addTo(mapController.map);
+            mapController.polygonCountry = L.polygon(newCoordinates, {color: "red"})
+                                           .addTo(mapController.map)
+                                           .bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                                           //.openPopup();
 
             //mapController.map.setView(centroid.geometry.coordinates);
             mapController.map.flyToBounds(newCoordinates, {animate: true, duration: 0.5});
@@ -79,8 +82,6 @@ function selectCounty(mapController, feature, layer) {
 function selectMode(mapController, parameter)
 {    
 }
-
-
 
 function reverseCoordinates(coordinates)
 {
