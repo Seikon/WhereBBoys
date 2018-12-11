@@ -42,9 +42,27 @@ MapController.prototype.renderTrainingPlaces = function(trainingPlaces)
 
 MapController.prototype.getPopUp = function(trainingPlace)
 {
-    return "<body style='background-color: black;'>" +
-            "<h2 style='color: red; background-color: black;'>Test</h2>" +
-            "<body>";
+    return "<h3 class='h4 has-line'>Lugar de entrenamiento</h3>" +
+    "<div class='row'>" +
+        "<div class='col-lg-12'><b style='color: white;'>+ Dónde</b></div>" +
+    "</div>" +
+    "<div class='row'>" +
+        "<div class='col-lg-12'><b style='color: #fc4103;'>"+ trainingPlace.address +"</b></div>" +
+    "</div>" +
+    "<div class='row'>" +
+        "<div class='col-lg-12'><b style='color: white;'>+ Cuándo</b></div>" +
+    "</div>" +
+    "<div class='row'>" +
+        "<div class='col-lg-12'><b style='color: #fc4103;'>"+ trainingPlace.type +"</b></div>" +
+    "</div>" +
+    "<div class='row'>" +
+        "<div class='col-lg-12'><b style='color: white;'>+ Contacto</b></div>" +
+    "</div>" +
+    "<div class='row'>" +
+        "<div class='col-lg-12'><strong style='color: #fc4103;'><small style='color: white;'>- Nombre  </small> "+ trainingPlace.contactPerson.aka + "</strong></div>" +
+        "<div class='col-lg-12'><strong style='color: #fc4103;'><small style='color: white;'>- Teléfono  </small> "+ trainingPlace.contactPerson.telefon + "</strong></div>" +
+        "<div class='col-lg-12'><strong style='color: #fc4103;'><small style='color: white;'>- Email  </small> "+ trainingPlace.contactPerson.email + "</strong></div>" +
+    "</div>";
 }
 
 MapController.prototype.showTrainingPlaceDetails = function(e)
