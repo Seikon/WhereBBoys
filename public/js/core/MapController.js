@@ -12,9 +12,7 @@ function MapController(map, worldMapLayer, containerId)
 
 MapController.prototype.showTrainingPlaces = function()
 {
-    var trainingPlacesRequest = new Request(SERVER_URL);
-
-    var deferred = trainingPlacesRequest.getTrainingPlaces(this.selectCountry.properties.wb_a2);
+    var deferred = this.cache.getTrainingPlaces(this.selectCountry.properties.wb_a2);
     this.map.removeLayer(this.trainingPlacesLayer);
     this.trainingPlacesLayer = new L.LayerGroup();
     this.trainingPlacesLayer.addTo(this.map);
@@ -36,8 +34,22 @@ MapController.prototype.renderTrainingPlaces = function(trainingPlaces)
     for(let i = 0; i < trainingPlaces.length; i++)
     {
         this.trainingPlacesLayer.addLayer(L.marker([trainingPlaces[i].coordinates.lat,
-                                                             trainingPlaces[i].coordinates.lon]));
+                                                    trainingPlaces[i].coordinates.lon])
+                                                    .bindPopup(this.getPopUp(trainingPlaces[i]))
+                                                    .on("click", $.proxy(this.showTrainingPlaceDetails, this)));
     }
+}
+
+MapController.prototype.getPopUp = function(trainingPlace)
+{
+    return "<body style='background-color: black;'>" +
+            "<h2 style='color: red; background-color: black;'>Test</h2>" +
+            "<body>";
+}
+
+MapController.prototype.showTrainingPlaceDetails = function(e)
+{
+    e.target.getPopup();
 }
 
 MapController.prototype.displayToolBox = function()

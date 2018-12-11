@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require("path");
 var fs = require('fs');
-var ModelDB = require('./Model/ModelDB')
+var ModelDB = require('./Models/ModelDB')
 
 ModelDB = new ModelDB();
 

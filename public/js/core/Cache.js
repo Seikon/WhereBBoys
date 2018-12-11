@@ -7,7 +7,9 @@ function Cache()
                                  //   'EN': {places: []} }
 }
 
-Cache.prototype.getcountryDancePlaces = function(countryKey)
+Cache.countryKey = 
+
+Cache.prototype.getTrainingPlaces = function(countryKey)
 {
     var deferredRequest;
     var deferredData;
@@ -18,7 +20,7 @@ Cache.prototype.getcountryDancePlaces = function(countryKey)
     {
         var request = new Request(SERVER_URL);
 
-        deferredRequest = request.getPlaces(countryKey);
+        deferredRequest = request.getTrainingPlaces(countryKey);
 
         //Send request when the information is not cached
         deferredRequest.done($.proxy(this.onCountryDPCompleted, this, countryKey, deferredData));
