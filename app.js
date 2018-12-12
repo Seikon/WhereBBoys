@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var structure = require("./structure");
+var resources = require("./resources");
 var geoserver = require("./geoserver");
 var path = require("path");
 
@@ -9,6 +10,10 @@ app.set('view engine', 'pug');
 app.use("/en", structure);
 app.use("/es", structure);
 app.use("/de", structure);
+
+//This controller provides information about
+// resources from the server
+app.use("/resources", resources);
 
 //This controller initiallizes the geoserver
 //with GeoJson data endpoints.
