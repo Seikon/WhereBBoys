@@ -1,7 +1,7 @@
 -- Make sure that you have installed mongodb in your computer.
 -- Open a terminal in your OS and execute mongo client ( make sure that you have a mongo service running (if not use mongod command))
 
-mongod --dbpath %PROJECT_DIRECTORY\db\data%
+mongod --dbpath %PROJECT_DIRECTORY%\db\data
 
 Example: mongod --dbpath C:\Workspace\WhereBBoys\db\data
 
@@ -15,5 +15,5 @@ mongo < testData.mongo.js
 
 -- Create DB objects (indexes, triggers...)
 
-mongo < createDatabase.mongo.js
+mongo < createDBObjects.mongo.js
 
