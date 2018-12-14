@@ -58,7 +58,6 @@ function selectCounty(mapController, feature, layer) {
 
             mapController.polygonCountry = L.polygon(newCoordinates, {color: "red"})
                                            .addTo(mapController.map)
-                                           .bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
                                            //.openPopup();
 
             //mapController.map.setView(centroid.geometry.coordinates);
