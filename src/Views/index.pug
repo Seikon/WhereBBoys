@@ -70,6 +70,49 @@ html
     // Information Section
     section.search-property.bg-black-1.center-section(id="divInformation" style="height: 50px; padding: 1.0em 0; text-align:center;")
       p(style="color: white;") #{UIMessages.stepOneDescription}
+    // New event input Section
+    section.search-property.bg-black-5.center-section.section-cased(id="divToolBox" style="height: 100%; padding: 2.5em 0; background-color:red;")
+      .container
+        form(action='#')
+        //-- Location --
+        .row
+          .form-group.col-lg-12
+            h3 Location
+        .row
+          .form-group.col-lg-6
+            input.form-control(type='text' name='keyword_search' placeholder='Adress of the place')
+          .form-group.col-lg-3
+            input.form-control(type='text' name='keyword_search' placeholder='Longitude')
+          .form-group.col-lg-3
+            input.form-control(type='text' name='keyword_search' placeholder='Latitude')
+        //-- Place information --
+        .row
+          .form-group.col-lg-12
+            h3 Place Information
+        .row
+          .form-group.col-lg-3       
+        //-- Contact Person --
+        .row
+          .form-group.col-lg-12
+            h3 Contact Person
+        .row
+          .form-group.col-lg-3
+            input.form-control(type='text' name='keyword_search' placeholder='Name')
+          .form-group.col-lg-3
+            input.form-control(type='text' name='keyword_search' placeholder='Surname')
+          .form-group.col-lg-3
+            input.form-control(type='text' name='keyword_search' placeholder='bboy/bgirl aka')
+          .form-group.col-lg-3
+            input.form-control(type='text' name='keyword_search' placeholder='crew')
+        .row
+          .form-group.col-lg-6
+            input.form-control(type='text' name='keyword_search' placeholder='Email')
+          .form-group.col-lg-6
+            input.form-control(type='text' name='keyword_search' placeholder='Telefon')
+          .form-group.col-lg-6
+            input.form-control(type='text' name='keyword_search' placeholder='Instagram')
+          .form-group.col-lg-6
+            input.form-control(type='text' name='keyword_search' placeholder='Facebook')
     // Tool box Section
     section.search-property.bg-black-5.center-section.section-cased(id="divToolBox" style="display: none; height: 100%; padding: 2.5em 0; background-color:red;")
       .container
@@ -85,6 +128,7 @@ html
               button.submit.btn.btn-gradient.full-width(type='submit')
                 img.button-icon(src="../icons/add.svg")
                 i  	&nbsp; #{UIMessages.toolbox.addPlace}
+
     // Scroll Top Button
     #scrollTopButton
       i.fa.fa-long-arrow-up
