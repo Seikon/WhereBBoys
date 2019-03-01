@@ -1,32 +1,38 @@
-var mongo = require('mongodb');
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+const mongo = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
+const url = "mongodb://localhost:27017/";
 
 class ModelDB
 {
-    constructor() 
+    constructor()
     {
-        MongoClient.connect(url).then(function(db)
-        {
-            var dbo = db.db("wherebboysdb");
-            this.dbo = dbo;
-            console.log("Db connection succesful!");
-
-        }.bind(this));
+        this.dbo = null;
     }
 
-    getTrainingPlaces(country,callback)
+    connect()
     {
-        return this.dbo.collection("trainingPlaces").find({countryKey: country}).toArray(function(err, trainingPlaces)
+        return MongoClient.connect(url).then(function(db)
         {
-            if(err)
+            this.dbo = db.db("wherebboysdb");
+            console.log("Db connection succesful!");
+
+        }.bind(this)).then();
+    }
+
+    getTrainingPlaces(country)
+    {
+        return new Promise((resolve, reject) => 
+        {
+            this.dbo.collection("trainingPlaces").find({countryKey: country}).toArray(
+            function(err, trainingPlaces) 
             {
-                throw new("Error getting training places");
-            }
-            else
-            {
-                callback(trainingPlaces);
-            }
+                if(err)
+                {
+                    reject(err);
+                }
+                else
+                    resolve(trainingPlaces);
+            });
         });
     }
 

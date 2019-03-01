@@ -3739,3 +3739,8 @@ select.form-control-lg:not([size]):not([multiple]) {
 {
   background-color: #333333;
 }
+
+.text-centered
+{
+  text-align: center;
+}

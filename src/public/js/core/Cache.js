@@ -40,7 +40,7 @@ Cache.prototype.onCountryDPCompleted = function(countryKey, deferredData, data)
 
     deferredData.resolve(data);
 }
-Cache.prototype.onCountryDPFailed = function(err)
+Cache.prototype.onCountryDPFailed = function(err, deferredData)
 {
     deferredData.reject(err);
 }
