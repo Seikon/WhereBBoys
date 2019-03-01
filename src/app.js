@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
-var structure = require("./structure");
-var geoserver = require("./geoserver");
+var structure = require("./routes/structure");
+var geoserver = require("./routes/geoserver");
 var helmet = require('helmet');
 var path = require('path');
 
