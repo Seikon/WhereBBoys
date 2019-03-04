@@ -4,12 +4,15 @@
   "description": "Gis Web Application for locating places and people whose practice break dance",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/app.js",
+    "debug": "node ./src/app.js"
   },
   "author": "Seikon",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "helmet": "^3.15.0",
     "mongodb": "^3.1.10",
     "nodemon": "^1.18.7",
     "pug": "^2.0.3"
