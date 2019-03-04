@@ -5,8 +5,12 @@ const ID_TOOL_ADD = "divAddTool";
 const ID_INFORMATION = "divInformation";
 const ID_OPTION_ADD = "optIdAdd";
 
-const STATE = {
+const EVENT_TYPE = {
+    OCASIONAL : 1,
+    SCHEDULED : 2
+}
 
+const STATE = {
     INITIAL : 0,
     COUNTRY_SELECTED : 1,
     ADD : 2

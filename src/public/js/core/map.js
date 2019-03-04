@@ -134,6 +134,18 @@ function clearForm()
     }
 }
 
+function changeEventType(element)
+{
+    switch(parseInt(element.value))
+    {
+        case EVENT_TYPE.OCASIONAL:
+        break;
+
+        case EVENT_TYPE.SCHEDULED:
+        break;
+    }
+}
+
 function getFields() {
 
     const fields = ["name", "surname", "email", "telephone", 

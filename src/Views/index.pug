@@ -16,6 +16,7 @@ html
     link(rel='stylesheet', href='../css/fontastic.css')
     // Bootstrap Select
     link(rel='stylesheet', href='../vendor/bootstrap-select/css/bootstrap-select.css')
+    link(rel='stylesheet', href='../vendor/bootstrap/css/bootstrap-formhelpers.min.css')
     // Google fonts - Poppins
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,700')
     // swiper carousel
@@ -105,8 +106,411 @@ html
           .form-group.col-lg-12
             h3 Place Information
         .row
-          .form-group.col-lg-3
-            input.form-control(type='checkbox' name='address' placeholder='Adress of the place')       
+          .form-group.col-lg-12
+            .dropdown-menu.open(role='combobox')
+              ul.dropdown-menu.inner(role='listbox', aria-expanded='false')
+                li.selected(data-original-index='0')
+                  a(tabindex='0', data-tokens='null', role='option', aria-disabled='false', aria-selected='true')
+                    span.text Ocasional
+                    span.glyphicon.glyphicon-ok.check-mark
+                li(data-original-index='1')
+                  a(tabindex='0', data-tokens='null', role='option', aria-disabled='false', aria-selected='false')
+                    span.text Scheduled
+                    span.glyphicon.glyphicon-ok.check-mark
+            select#types.selectpicker(name='types', tabindex='-98' onchange="changeEventType(this)")
+              option(value="1") Ocasional
+              option(value="2") Scheduled
+        //-- Scheduled form --
+        #divScheduledForm(style="display: none")
+          .row
+            .form-group.col-lg-1
+            .form-group.col-lg-2
+              h5 Lunes
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+              br
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+            .form-group.col-lg-2
+              h5 Martes
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+              br
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+            .form-group.col-lg-2
+              h5 Miercoles
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+              br
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+            .form-group.col-lg-2
+              h5 Jueves
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+              br
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+            .form-group.col-lg-2
+              h5 Viernes
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+              br
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+              h5 Sábado
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+              br
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+            .form-group.col-lg-2
+              h5 Domingo
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+              br
+              .bfh-timepicker
+                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                  span.add-on
+                    i.icon-time
+                  input.input-medium(type='text', readonly='')
+                .bfh-timepicker-popover
+                  table.table
+                    tbody
+                      tr
+                        td.hour
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
+                        td.separator :
+                        td.minute
+                          a.next(href='#')
+                            i.icon-chevron-up
+                          br
+                          input.input-mini(type='text', readonly='')
+                          br
+                          a.previous(href='#')
+                            i.icon-chevron-down
         //-- Contact Person --
         .row
           .form-group.col-lg-12
@@ -133,11 +537,11 @@ html
           .form-group.col-lg-2
           .form-group.col-lg-2
           .form-group.col-lg-2
-            button.submit.btn.btn-gradient.full-width(type='submit')
-              i #{UIMessages.toolbox.addPlace}
-          .form-group.col-lg-2
             button.submit.btn.btn-gradient.full-width(onclick='cancelAdd()')
               i #{UIMessages.toolbox.cancel}
+          .form-group.col-lg-2
+            button.submit.btn.btn-gradient.full-width(type='submit')
+              i #{UIMessages.toolbox.addPlace}
 
     // Scroll Top Button
     #scrollTopButton
@@ -210,6 +614,7 @@ html
     script(src='http://code.jquery.com/jquery-3.3.1.min.js')
     script(src='../vendor/popper.js/umd/popper.min.js')
     script(src='../vendor/bootstrap/js/bootstrap.min.js')
+    script(src="../vendor/bootstrap/js/bootstrap-formhelpers.min.js")
     script(src='../vendor/bootstrap-select/js/bootstrap-select.js')
     script(src='https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js')
     script(src='../vendor/swiper/js/swiper.js')
