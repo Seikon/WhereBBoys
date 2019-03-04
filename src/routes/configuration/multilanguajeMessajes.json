@@ -8,11 +8,13 @@
             "donate": "Donar",
             "contact": "Contactar"
         },
-        "headerTitle": "Encuentra BBoys de tu ciudad o región en todo el mundo",
+        "headerTitle": "Encuentra bboys y bgirls de tu ciudad o región en todo el mundo",
         "stepOneDescription" : "Selecciona el país haciendo click sobre el mapa.",
+        "stepAddPlace" : "Rellena el formulario y haz click sobre el mapa para obtener las coordenadas.",
         "toolbox": {
             "location": "Ubicación",
-            "addPlace": "Añadir lugar"
+            "addPlace": "Añadir lugar",
+            "cancel": "Cancelar"
         }
     },
 
@@ -25,11 +27,13 @@
             "donate": "Donate",
             "contact": "Contact"
         },
-        "headerTitle": "Find BBoys from your city or your place all around the world",
+        "headerTitle": "Find bboys and bgirls from your city or your place all around the world",
         "stepOneDescription" : "Click on the desired country from the map.",
+        "stepAddPlace" : "Fill the form and click in the map to get the coordinates.",
         "toolbox": {
             "location": "Location",
-            "addPlace": "Add Place"
+            "addPlace": "Add Place",
+            "cancel": "Cancel"
         }
     },
 
@@ -42,11 +46,13 @@
             "donate": "Spenden",
             "contact": "Kontakt"
         },
-        "headerTitle": "Finden Sie BBoys aus Ihrer Stadt oder Ihrem Ort auf der ganzen Welt",
+        "headerTitle": "Finden Sie bboys und bgirls aus Ihrer Stadt oder Ihrem Ort auf der ganzen Welt",
         "stepOneDescription" : "Klicken Sie erste auf der Karte auf das gewünschte Land.",
+        "stepAddPlace": "Füllen Sie das Formular aus und klicken Sie in die Map, um die Koordinaten zu erhalten.",
         "toolbox": {
             "location": "Standort",
-            "addPlace": "Platz hinzufügen"
+            "addPlace": "Platz hinzufügen",
+            "cancel": "Abrecchen"
         }
     }
 }

@@ -1,4 +1,4 @@
-var mapController;
+var mapControllerGlobal;
 var ID_CONTAINER = "mapContainer";
 
 $(document).ready(function(){
@@ -19,19 +19,20 @@ function initMap()
 
     var deferred = worldMapRequest.getGeoJSONWorldMap();
 
-    Window.mapController = mapController;
 
     deferred.done(function(data) {
 
         var mapController = new MapController(map, worldMapLayer, ID_CONTAINER);
 
-        mapController = new MapController(map, ID_CONTAINER);
-        mapController.trainingPlacesLayer = new L.LayerGroup();
+        mapControllerGlobal = mapController;
+
+        mapControllerGlobal = new MapController(map, ID_CONTAINER);
+        mapControllerGlobal.trainingPlacesLayer = new L.LayerGroup();
 
         //Instance the WorldMap layer throught geoserver
-        var worldMapLayer = L.geoJson(data, {style: {"color": "#dcbe37"}, onEachFeature: $.proxy(selectCounty, this, mapController)}).addTo(map);
+        var worldMapLayer = L.geoJson(data, {style: {"color": "#dcbe37"}, onEachFeature: selectCounty}).addTo(map);
         //Instance Training places layer
-        mapController.trainingPlacesLayer.addTo(map);
+        mapControllerGlobal.trainingPlacesLayer.addTo(map);
 
     });
 
@@ -40,47 +41,58 @@ function initMap()
     });
 }
 
-function selectCounty(mapController, feature, layer) {
+function selectCounty( feature, layer) {
     layer.on({
         //When users click on a country, we will make zoom on the selection
         click: function(e) 
-        { 
-            var selectedFeature = e.target.feature;
-
-            mapController.selectCountry = e.target.feature;
-
-            var newCoordinates = reverseCoordinates(mapController.selectCountry.geometry.coordinates);
-            
-            if(mapController.polygonCountry)
+        {
+            if(mapControllerGlobal.currentState != STATE.ADD)
             {
-                mapController.map.removeLayer(mapController.polygonCountry);
-            }
+                var selectedFeature = e.target.feature;
 
-            mapController.polygonCountry = L.polygon(newCoordinates, {color: "red"})
-                                           .addTo(mapController.map)
-                                           .bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
-                                           //.openPopup();
-
-            //mapController.map.setView(centroid.geometry.coordinates);
-            mapController.map.flyToBounds(newCoordinates, {animate: true, duration: 0.5});
-
-            //Remove previous markers
-            mapController.map.removeLayer(mapController.trainingPlacesLayer);
-
-            mapController.map.once('moveend', function() {
+                mapControllerGlobal.selectCountry = e.target.feature;
+    
+                var newCoordinates = reverseCoordinates(mapControllerGlobal.selectCountry.geometry.coordinates);
+                
+                if(mapControllerGlobal.polygonCountry)
+                {
+                    mapControllerGlobal.map.removeLayer(mapControllerGlobal.polygonCountry);
+                }
+    
+                mapControllerGlobal.polygonCountry = L.polygon(newCoordinates, {color: "red"})
+                                               .addTo(mapControllerGlobal.map)
+                                               .bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+                                               //.openPopup();
+    
+                //mapController.map.setView(centroid.geometry.coordinates);
+                mapControllerGlobal.map.flyToBounds(newCoordinates, {animate: true, duration: 0.5});
+    
+                //Remove previous markers
+                mapControllerGlobal.map.removeLayer(mapControllerGlobal.trainingPlacesLayer);
+    
+                mapControllerGlobal.map.once('moveend', function() {
                 //Show training places
-                mapController.showTrainingPlaces(mapController);
+                mapControllerGlobal.showTrainingPlaces(mapControllerGlobal);
                 //Display ToolBox
-                mapController.displayToolBox();
-            });
-
-
+                mapControllerGlobal.displayToolBox();
+                mapControllerGlobal.changeState(STATE.COUNTRY_SELECTED);
+                });
+            } 
         }
     });
 }
 
-function selectMode(mapController, parameter)
-{    
+function showAddPlaceTool()
+{
+    mapControllerGlobal.changeState(STATE.ADD);
+    mapControllerGlobal.hideToolBox(mapControllerGlobal.displayAddTool);
+}
+
+function cancelAdd()
+{
+    mapControllerGlobal.changeState(STATE.COUNTRY_SELECTED);
+    mapControllerGlobal.hideAddTool(mapControllerGlobal.displayToolBox);
+    clearForm();
 }
 
 function reverseCoordinates(coordinates)
@@ -110,4 +122,31 @@ function reverseCoordinates(coordinates)
     }
 
     return returnedCoordinates;
+}
+
+function clearForm()
+{
+    const fields = getFields();
+
+    for(let field in fields)
+    {
+        fields[field][0].value = "";
+    }
+}
+
+function getFields() {
+
+    const fields = ["name", "surname", "email", "telephone", 
+                    "insta", "facebook", "aka", "crew",
+                    "longitude", "latitude", "address"];
+
+    let formData = {};
+
+    for(let indField = 0; indField < fields.length; indField++)
+    {
+        formData[fields[indField]] = document.getElementsByName(fields[indField]);
+    }
+
+    return formData;
+
 }

@@ -8,6 +8,8 @@ function MapController(map, worldMapLayer, containerId)
     this.polygonCountry;
     this.cache = new Cache();
     this.isToolBoxDisplayed = false;
+    // in wich state we can find the app (adding new place, with country selected...)
+    this.currentState = STATE.INITIAL;
 }
 
 MapController.prototype.showTrainingPlaces = function()
@@ -16,6 +18,7 @@ MapController.prototype.showTrainingPlaces = function()
     this.map.removeLayer(this.trainingPlacesLayer);
     this.trainingPlacesLayer = new L.LayerGroup();
     this.trainingPlacesLayer.addTo(this.map);
+
     deferred.done($.proxy(function(trainingPlaces) 
     {
         this.renderTrainingPlaces(trainingPlaces);
@@ -70,12 +73,35 @@ MapController.prototype.showTrainingPlaceDetails = function(e)
     e.target.getPopup();
 }
 
-MapController.prototype.displayToolBox = function()
+MapController.prototype.displayToolBox = function(callback)
 {
-    if(!this.isToolBoxDisplayed)
+    if(this.currentState != STATE.ADD)
     {
         this.isToolBoxDisplayed = true;
-        $("#" + ID_TOOLBOX).show("slow");
+        $("#" + ID_TOOLBOX).show("slow", callback);
 
     }
+}
+
+MapController.prototype.hideToolBox = function(callback)
+{
+
+        this.isToolBoxDisplayed = false;
+        $("#" + ID_TOOLBOX).hide("slow", callback);
+}
+
+MapController.prototype.changeState = function(newState) 
+{
+    this.currentState = newState;
+    mapControllerGlobal = this;
+}
+
+MapController.prototype.displayAddTool = function(callback)
+{
+        $("#" + ID_TOOL_ADD).show("slow", callback);
+}
+
+MapController.prototype.hideAddTool = function(callback)
+{
+        $("#" + ID_TOOL_ADD).hide("slow", callback);
 }

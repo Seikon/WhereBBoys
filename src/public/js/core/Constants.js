@@ -1,11 +1,13 @@
-var SERVER_URL = "http://localhost:3000";
+const SERVER_URL = "http://localhost:3000";
 
-var ID_TOOLBOX = "divToolBox";
-var ID_INFORMATION = "divInformation";
-var ID_OPTION_ADD = "optIdAdd";
+const ID_TOOLBOX = "divToolBox";
+const ID_TOOL_ADD = "divAddTool";
+const ID_INFORMATION = "divInformation";
+const ID_OPTION_ADD = "optIdAdd";
 
-var INTERACTION_MODE = {
+const STATE = {
 
-    SEARCH : 0,
-    ADD : 1
+    INITIAL : 0,
+    COUNTRY_SELECTED : 1,
+    ADD : 2
 }
