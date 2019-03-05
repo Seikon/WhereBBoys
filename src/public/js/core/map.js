@@ -139,14 +139,17 @@ function changeEventType(element)
     switch(parseInt(element.value))
     {
         case EVENT_TYPE.OCASIONAL:
+        $("#" + ID_SCHEDULED).hide("slow");
         break;
 
         case EVENT_TYPE.SCHEDULED:
+        $("#" + ID_SCHEDULED).show("slow");
         break;
     }
 }
 
-function getFields() {
+function getFields() 
+{
 
     const fields = ["name", "surname", "email", "telephone", 
                     "insta", "facebook", "aka", "crew",
@@ -161,4 +164,10 @@ function getFields() {
 
     return formData;
 
+}
+
+function onInputDayChange(element, idChild)
+{
+    $(element.parentElement).toggleClass("active");
+    $("#" + idChild).toggle("fast");
 }

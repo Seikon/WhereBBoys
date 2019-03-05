@@ -122,37 +122,16 @@ html
               option(value="2") Scheduled
         //-- Scheduled form --
         #divScheduledForm(style="display: none")
-          .row
-            .form-group.col-lg-1
+          .row 
+            .form-group.col-lg-12(style="text-align: center;")
+              label.label-template-checkbox(for='monday')
+                h3 #{UIMessages.days.monday}
+                input#monday(type='checkbox', name='monday', onclick="onInputDayChange(this, 'divMonday')")
+          #divMonday.row(style="display: none;")
             .form-group.col-lg-2
-              h5 Lunes
-              .bfh-timepicker
-                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
-                  span.add-on
-                    i.icon-time
-                  input.input-medium(type='text', readonly='')
-                .bfh-timepicker-popover
-                  table.table
-                    tbody
-                      tr
-                        td.hour
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-                        td.separator :
-                        td.minute
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-              br
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+              h5(style="text-align: center;") Inicio
               .bfh-timepicker
                 .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
                   span.add-on
@@ -180,34 +159,43 @@ html
                           a.previous(href='#')
                             i.icon-chevron-down
             .form-group.col-lg-2
-              h5 Martes
-              .bfh-timepicker
-                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
-                  span.add-on
-                    i.icon-time
-                  input.input-medium(type='text', readonly='')
-                .bfh-timepicker-popover
-                  table.table
-                    tbody
-                      tr
-                        td.hour
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-                        td.separator :
-                        td.minute
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-              br
+                          h5(style="text-align: center;") Fin
+                          .bfh-timepicker
+                            .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                              span.add-on
+                                i.icon-time
+                              input.input-medium(type='text', readonly='')
+                            .bfh-timepicker-popover
+                              table.table
+                                tbody
+                                  tr
+                                    td.hour
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+                                    td.separator :
+                                    td.minute
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+          .row 
+            .form-group.col-lg-12(style="text-align: center;")
+              label.label-template-checkbox(for='tuesday')
+                h3 #{UIMessages.days.tuesday}
+                input#tuesday(type='checkbox', name='tuesday', onclick="onInputDayChange(this, 'divTuesday')")
+          #divTuesday.row(style="display: none;")
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+              h5(style="text-align: center;") Inicio
               .bfh-timepicker
                 .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
                   span.add-on
@@ -235,34 +223,43 @@ html
                           a.previous(href='#')
                             i.icon-chevron-down
             .form-group.col-lg-2
-              h5 Miercoles
-              .bfh-timepicker
-                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
-                  span.add-on
-                    i.icon-time
-                  input.input-medium(type='text', readonly='')
-                .bfh-timepicker-popover
-                  table.table
-                    tbody
-                      tr
-                        td.hour
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-                        td.separator :
-                        td.minute
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-              br
+                          h5(style="text-align: center;") Fin
+                          .bfh-timepicker
+                            .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                              span.add-on
+                                i.icon-time
+                              input.input-medium(type='text', readonly='')
+                            .bfh-timepicker-popover
+                              table.table
+                                tbody
+                                  tr
+                                    td.hour
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+                                    td.separator :
+                                    td.minute
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+          .row 
+            .form-group.col-lg-12(style="text-align: center;")
+              label.label-template-checkbox(for='wednesday')
+                h3  #{UIMessages.days.wednesday}
+                input#wednesday(type='checkbox', name='wednesday', onclick="onInputDayChange(this, 'divWednesday')")
+          #divWednesday.row(style="display: none;")
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+              h5(style="text-align: center;") Inicio
               .bfh-timepicker
                 .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
                   span.add-on
@@ -290,34 +287,43 @@ html
                           a.previous(href='#')
                             i.icon-chevron-down
             .form-group.col-lg-2
-              h5 Jueves
-              .bfh-timepicker
-                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
-                  span.add-on
-                    i.icon-time
-                  input.input-medium(type='text', readonly='')
-                .bfh-timepicker-popover
-                  table.table
-                    tbody
-                      tr
-                        td.hour
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-                        td.separator :
-                        td.minute
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-              br
+                          h5(style="text-align: center;") Fin
+                          .bfh-timepicker
+                            .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                              span.add-on
+                                i.icon-time
+                              input.input-medium(type='text', readonly='')
+                            .bfh-timepicker-popover
+                              table.table
+                                tbody
+                                  tr
+                                    td.hour
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+                                    td.separator :
+                                    td.minute
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+          .row 
+            .form-group.col-lg-12(style="text-align: center;")
+              label.label-template-checkbox(for='thursday')
+                h3  #{UIMessages.days.thursday}
+                input#thursday(type='checkbox', name='thursday', onclick="onInputDayChange(this, 'divThursday')")
+          #divThursday.row(style="display: none;")
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+              h5(style="text-align: center;") Inicio
               .bfh-timepicker
                 .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
                   span.add-on
@@ -345,34 +351,44 @@ html
                           a.previous(href='#')
                             i.icon-chevron-down
             .form-group.col-lg-2
-              h5 Viernes
-              .bfh-timepicker
-                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
-                  span.add-on
-                    i.icon-time
-                  input.input-medium(type='text', readonly='')
-                .bfh-timepicker-popover
-                  table.table
-                    tbody
-                      tr
-                        td.hour
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-                        td.separator :
-                        td.minute
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-              br
+                          h5(style="text-align: center;") Fin
+                          .bfh-timepicker
+                            .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                              span.add-on
+                                i.icon-time
+                              input.input-medium(type='text', readonly='')
+                            .bfh-timepicker-popover
+                              table.table
+                                tbody
+                                  tr
+                                    td.hour
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+                                    td.separator :
+                                    td.minute
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+          .row 
+            .form-group.col-lg-12(style="text-align: center;")
+            .form-group.col-lg-12(style="text-align: center;")
+              label.label-template-checkbox(for='friday')
+                h3  #{UIMessages.days.friday}
+                input#friday(type='checkbox', name='friday', onclick="onInputDayChange(this, 'divFriday')")
+          #divFriday.row(style="display: none;")
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+              h5(style="text-align: center;") Inicio
               .bfh-timepicker
                 .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
                   span.add-on
@@ -400,36 +416,44 @@ html
                           a.previous(href='#')
                             i.icon-chevron-down
             .form-group.col-lg-2
+                          h5(style="text-align: center;") Fin
+                          .bfh-timepicker
+                            .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                              span.add-on
+                                i.icon-time
+                              input.input-medium(type='text', readonly='')
+                            .bfh-timepicker-popover
+                              table.table
+                                tbody
+                                  tr
+                                    td.hour
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+                                    td.separator :
+                                    td.minute
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+          .row 
+            .form-group.col-lg-12(style="text-align: center;")
+            .form-group.col-lg-12(style="text-align: center;")
+              label.label-template-checkbox(for='saturday')
+                h3 Sábado
+                input#saturday(type='checkbox', name='saturday', onclick="onInputDayChange(this, 'divSaturday')")
+          #divSaturday.row(style="display: none;")
             .form-group.col-lg-2
             .form-group.col-lg-2
-              h5 Sábado
-              .bfh-timepicker
-                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
-                  span.add-on
-                    i.icon-time
-                  input.input-medium(type='text', readonly='')
-                .bfh-timepicker-popover
-                  table.table
-                    tbody
-                      tr
-                        td.hour
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-                        td.separator :
-                        td.minute
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-              br
+            .form-group.col-lg-2
+              h5(style="text-align: center;") Inicio
               .bfh-timepicker
                 .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
                   span.add-on
@@ -457,7 +481,44 @@ html
                           a.previous(href='#')
                             i.icon-chevron-down
             .form-group.col-lg-2
-              h5 Domingo
+                          h5(style="text-align: center;") Fin
+                          .bfh-timepicker
+                            .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                              span.add-on
+                                i.icon-time
+                              input.input-medium(type='text', readonly='')
+                            .bfh-timepicker-popover
+                              table.table
+                                tbody
+                                  tr
+                                    td.hour
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+                                    td.separator :
+                                    td.minute
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+          .row 
+            .form-group.col-lg-12(style="text-align: center;")
+            .form-group.col-lg-12(style="text-align: center;")
+              label.label-template-checkbox(for='sunday')
+                h3 Domingo
+                input#sunday(type='checkbox', name='sunday', onclick="onInputDayChange(this, 'divSunday')")
+          #divSunday.row(style="display: none;")
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+            .form-group.col-lg-2
+              h5(style="text-align: center;") Inicio
               .bfh-timepicker
                 .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
                   span.add-on
@@ -484,33 +545,34 @@ html
                           br
                           a.previous(href='#')
                             i.icon-chevron-down
-              br
-              .bfh-timepicker
-                .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
-                  span.add-on
-                    i.icon-time
-                  input.input-medium(type='text', readonly='')
-                .bfh-timepicker-popover
-                  table.table
-                    tbody
-                      tr
-                        td.hour
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
-                        td.separator :
-                        td.minute
-                          a.next(href='#')
-                            i.icon-chevron-up
-                          br
-                          input.input-mini(type='text', readonly='')
-                          br
-                          a.previous(href='#')
-                            i.icon-chevron-down
+            .form-group.col-lg-2
+                          h5(style="text-align: center;") Fin
+                          .bfh-timepicker
+                            .input-prepend.bfh-timepicker-toggle(data-toggle='bfh-timepicker',)
+                              span.add-on
+                                i.icon-time
+                              input.input-medium(type='text', readonly='')
+                            .bfh-timepicker-popover
+                              table.table
+                                tbody
+                                  tr
+                                    td.hour
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down
+                                    td.separator :
+                                    td.minute
+                                      a.next(href='#')
+                                        i.icon-chevron-up
+                                      br
+                                      input.input-mini(type='text', readonly='')
+                                      br
+                                      a.previous(href='#')
+                                        i.icon-chevron-down                                
         //-- Contact Person --
         .row
           .form-group.col-lg-12

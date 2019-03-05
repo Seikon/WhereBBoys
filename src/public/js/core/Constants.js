@@ -4,6 +4,7 @@ const ID_TOOLBOX = "divToolBox";
 const ID_TOOL_ADD = "divAddTool";
 const ID_INFORMATION = "divInformation";
 const ID_OPTION_ADD = "optIdAdd";
+const ID_SCHEDULED = "divScheduledForm";
 
 const EVENT_TYPE = {
     OCASIONAL : 1,

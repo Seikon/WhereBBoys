@@ -15,6 +15,15 @@
             "location": "Ubicación",
             "addPlace": "Añadir lugar",
             "cancel": "Cancelar"
+        },
+        "days" : {
+            "monday": "Lunes",
+            "tuesday": "Martes",
+            "wednesday": "Miercoles",
+            "thursday": "Jueves",
+            "friday": "Viernes",
+            "saturday": "Sábado",
+            "sunday": "Domingo"
         }
     },
 
@@ -34,6 +43,15 @@
             "location": "Location",
             "addPlace": "Add Place",
             "cancel": "Cancel"
+        },
+        "days" : {
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "sunday": "Sunday"
         }
     },
 
@@ -53,6 +71,15 @@
             "location": "Standort",
             "addPlace": "Platz hinzufügen",
             "cancel": "Abrecchen"
+        },
+        "days" : {
+            "monday": "Montag",
+            "tuesday": "Dienstag",
+            "wednesday": "Mittwoch",
+            "thursday": "Donerstag",
+            "friday": "Fritag",
+            "saturday": "Samstag",
+            "sunday": "Sontag"
         }
     }
 }
